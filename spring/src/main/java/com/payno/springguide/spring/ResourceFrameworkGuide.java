@@ -8,7 +8,6 @@ import org.springframework.util.ClassUtils;
 import org.springframework.util.ResourceUtils;
 
 import java.io.IOException;
-import java.lang.reflect.Method;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;

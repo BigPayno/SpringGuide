@@ -32,6 +32,7 @@ import org.springframework.stereotype.Component;
  *              embeddedValueResolvers
  *  BeanPostProcessor的使用
  *  BeanFactoryProcessor的使用
+ *  这两个都是在refresh中更新的，换而言之在这之后加入的bean并不会执行post处理
  */
 @Configuration
 public class BeanFactoryFrameworkGuide {
@@ -69,6 +70,7 @@ public class BeanFactoryFrameworkGuide {
         public static void main(String[] args) {
             AnnotationConfigApplicationContext applicationContext=new AnnotationConfigApplicationContext(BeanFactoryFrameworkGuide.class);
             Person person=applicationContext.getBean("person",Person.class);
+            applicationContext.register(SpringClassLoaderGuide.Config2.class);
             System.out.println(person);
         }
     }

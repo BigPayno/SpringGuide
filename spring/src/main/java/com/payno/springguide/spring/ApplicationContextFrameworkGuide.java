@@ -32,6 +32,8 @@ import org.springframework.stereotype.Component;
  *
  *     ApplicationContext是接口，暴露相关api，BeanFactory是容器，BeanDefinition是Domain
  *
+ *     AnnotationConfigApplicationContext Spring3.0
+ *
  */
 public class ApplicationContextFrameworkGuide {
     @Configuration

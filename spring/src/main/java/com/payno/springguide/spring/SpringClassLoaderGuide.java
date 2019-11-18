@@ -125,15 +125,18 @@ public class SpringClassLoaderGuide {
             ResourceClassLoader loader=new ResourceClassLoader(ClassUtils.getDefaultClassLoader());
             loader.resolve("jdkguide.print.PrintfGuide","file:D:\\test\\guide\\target\\classes\\jdkguide\\print\\PrintfGuide.class");
             loader.resolve("jdkguide.print.PrintConfig","file:D:\\test\\guide\\target\\classes\\jdkguide\\print\\PrintConfig.class");
+            loader.resolve("jdkguide.print.TestConfig","file:D:\\test\\guide\\target\\classes\\jdkguide\\print\\TestConfig.class");
             loader.loadClass("jdkguide.print.PrintfGuide");
-            loader.loadClass("com.google.common.base.Joiner");
-            Class<?> clazz=loader.loadClass("jdkguide.print.PrintConfig");
-            context.register(clazz);
+            Class<?> clazz=loader.loadClass("jdkguide.print.TestConfig");
+            context.registerBean("test",clazz,context.getBean(Joiner.class));
             System.out.println(context.getBean(clazz));
             ImmutableList.copyOf(clazz.getDeclaredMethods()).forEach(System.out::println);
             ImmutableList.copyOf(clazz.getDeclaredFields()).forEach(System.out::println);
             //Joiner joiner=(Joiner) clazz.getDeclaredField("joiner").get(context.getBean(clazz));
             //System.out.println(joiner.join("a","b"));
+            context.removeBeanDefinition("test");
+            //通过构造器可以动态注入释放Bean
+            System.out.println(context.getBean(clazz));
         }
     }
 }

@@ -1,6 +1,4 @@
-package com.payno.transaction;
-
-import org.springframework.util.ClassUtils;
+package com.payno.transaction.Test;
 
 /**
  * @author payno

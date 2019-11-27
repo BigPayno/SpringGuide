@@ -1,4 +1,4 @@
-package com.payno.webmvc.config;
+package com.payno.webmvc.web.config;
 
 import org.springframework.boot.web.servlet.MultipartConfigFactory;
 import org.springframework.context.annotation.Bean;

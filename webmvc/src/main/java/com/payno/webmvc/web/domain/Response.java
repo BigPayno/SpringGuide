@@ -28,4 +28,7 @@ public class Response<T> implements Serializable {
     public static <T> Response<T> of(T t){
         return new Response<T>(t,200,"ok");
     }
+    public static <T> Response<T> ok(){
+        return new Response<T>(null,200,"ok");
+    }
 }

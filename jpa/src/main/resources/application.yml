@@ -1,0 +1,24 @@
+spring:
+  datasource:
+   url: jdbc:oracle:thin:@127.0.0.1:1521:orcl
+   username: nzdev
+   password: NZJRKJ_DEV
+   driver-class-name: oracle.jdbc.OracleDriver
+   druid:
+    max-lifetime: 1765000
+    maximum-pool-size: 15
+    use-global-data-source-stat: true
+    filters: stat,wall
+    monitor:
+      enabled: false
+  jpa:
+    hibernate:
+      ddl-auto: update
+    database-platform: org.hibernate.dialect.MySQLDialect
+    show-sql: true
+    properties:
+      #批量更新与插入
+      jdbc:
+        batch_size: 25
+        order_inserts: true
+        order_updates: true

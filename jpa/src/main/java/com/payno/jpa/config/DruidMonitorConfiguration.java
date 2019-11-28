@@ -1,4 +1,4 @@
-package com.payno.jpa.core;
+package com.payno.jpa.config;
 
 import com.alibaba.druid.support.http.StatViewServlet;
 import com.alibaba.druid.support.http.WebStatFilter;

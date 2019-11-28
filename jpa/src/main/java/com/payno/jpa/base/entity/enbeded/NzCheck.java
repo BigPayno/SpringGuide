@@ -15,7 +15,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "Check")
+@Table(name = "My_Check")
 @SuppressWarnings("unchecked")
 public class NzCheck implements DataAccess {
     @EmbeddedId

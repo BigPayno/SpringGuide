@@ -28,7 +28,7 @@ import java.util.List;
 public class PythonScript {
     @Id
     @GeneratedValue(generator = "UUIDGenerator")
-    @GenericGenerator(name = "UUIDGenerator", strategy = "com.gz.parser.core.utils.AssignedUUIDGenerator")
+    @GenericGenerator(name = "UUIDGenerator", strategy = "com.payno.jpa.util.UUIDGenerator")
     private String pythonScriptId;
     private String pythonScriptName;
     private String pythonScriptDescription;

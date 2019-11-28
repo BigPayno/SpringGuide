@@ -19,7 +19,7 @@ import java.util.Set;
 public class Flow {
 	@Id
 	@GeneratedValue(generator = "UUIDGenerator")
-	@GenericGenerator(name = "UUIDGenerator", strategy = "com.payno.jps.util.UUIDGenerator")
+	@GenericGenerator(name = "UUIDGenerator", strategy = "com.payno.jpa.util.UUIDGenerator")
 	private String flowId;
 	private String flowCode;
 	private String flowDefinition;

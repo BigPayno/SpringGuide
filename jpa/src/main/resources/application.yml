@@ -4,17 +4,16 @@ spring:
    username: nzdev
    password: NZJRKJ_DEV
    driver-class-name: oracle.jdbc.OracleDriver
-   druid:
-    max-lifetime: 1765000
-    maximum-pool-size: 15
-    use-global-data-source-stat: true
-    filters: stat,wall
-    monitor:
-      enabled: false
+   #durid
+   max-lifetime: 1765000
+   maximum-pool-size: 15
+   use-global-data-source-stat: true
+   filters: stat,wall
+   monitor:
+     enabled: false
+   type: com.alibaba.druid.pool.DruidDataSource
   jpa:
-    hibernate:
-      ddl-auto: update
-    database-platform: org.hibernate.dialect.MySQLDialect
+    database-platform: org.hibernate.dialect.Oracle10gDialect
     show-sql: true
     properties:
       #批量更新与插入
@@ -22,3 +21,5 @@ spring:
         batch_size: 25
         order_inserts: true
         order_updates: true
+    # only dev
+    generate-ddl: true

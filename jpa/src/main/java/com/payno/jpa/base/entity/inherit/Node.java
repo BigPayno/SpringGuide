@@ -20,7 +20,7 @@ import java.util.Optional;
 public class Node {
 	@Id
 	@GeneratedValue(generator = "UUIDGenerator")
-	@GenericGenerator(name = "UUIDGenerator", strategy = "com.payno.jps.util.UUIDGenerator")
+	@GenericGenerator(name = "UUIDGenerator", strategy = "com.payno.jpa.util.UUIDGenerator")
 	private String nodeId;
 	private String nodeName;
 	private String nodeType;

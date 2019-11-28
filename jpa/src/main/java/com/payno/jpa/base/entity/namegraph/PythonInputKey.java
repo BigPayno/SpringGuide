@@ -30,7 +30,7 @@ import java.util.function.Function;
 public class PythonInputKey {
     @Id
     @GeneratedValue(generator = "UUIDGenerator")
-    @GenericGenerator(name = "UUIDGenerator", strategy = "com.gz.parser.core.utils.AssignedUUIDGenerator")
+    @GenericGenerator(name = "UUIDGenerator", strategy = "com.payno.jpa.util.UUIDGenerator")
     private String inputKeyId;
     private String inputKeyName;
     private String pythonScriptId;

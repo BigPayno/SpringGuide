@@ -32,6 +32,12 @@ public class ExecGuide {
             return null;
         });
         stringRedisTemplate.execute(redisScript, keys, args);
+        /**
+         * 管道操作
+         */
+        stringRedisTemplate.executePipelined((RedisCallback<? extends Object>) connection->{
+            return null;
+        });
     }
 
     /**

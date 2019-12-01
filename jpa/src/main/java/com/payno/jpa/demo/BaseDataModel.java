@@ -19,6 +19,9 @@ import java.util.function.Predicate;
  * @author payno
  * @date 2019/11/28 10:26
  * @description
+ *      unique
+ *
+ *      SpringBoot 2.21
  */
 @Setter
 @Getter

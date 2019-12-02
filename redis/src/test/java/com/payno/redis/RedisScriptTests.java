@@ -55,4 +55,15 @@ public class RedisScriptTests {
         List<DelayedTask> delayedTasks=scriptSupport.pullJobs("limitTask",1,TimeUnit.DAYS);
         delayedTasks.forEach(System.out::println);
     }
+
+    @Test
+    public void test(){
+        /**
+         * 这里是大坑，以后再看
+         */
+        System.out.println(TimeUnit.MILLISECONDS.toNanos(System.currentTimeMillis()));
+        System.out.println(System.nanoTime());
+        System.out.println(TimeUnit.NANOSECONDS.toMillis(System.nanoTime()));
+        System.out.println(System.currentTimeMillis());
+    }
 }

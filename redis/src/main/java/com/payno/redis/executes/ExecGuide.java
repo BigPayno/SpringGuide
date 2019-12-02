@@ -22,15 +22,31 @@ public class ExecGuide {
      * 执行redis操作，SessionCallBack、RedisCallBack、RedisScript
      */
     public void operations(DefaultRedisScript<Long> redisScript, List<String> keys, Object... args){
+        /**
+         * SessionCallback保证在同一次连接中执行,必须tryCatch
+         */
         stringRedisTemplate.execute(new SessionCallback<Object>() {
             @Override
             public <K, V> Object execute(RedisOperations<K, V> redisOperations) throws DataAccessException {
+                try{
+                    //doSomething
+                }catch (Exception e){
+                    //catch exception
+                }
                 return null;
             }
         });
+        /**
+         * RedisCallback
+         * @exposeConnection    是否向RedisCallback暴露本地连接
+         * @pipeline        是否在一个管道中执行操作
+         */
         stringRedisTemplate.execute((RedisCallback<? extends Object>) connection->{
             return null;
-        });
+        },true,true);
+        /**
+         * 通过lua脚本执行redis
+         */
         stringRedisTemplate.execute(redisScript, keys, args);
         /**
          * 管道操作

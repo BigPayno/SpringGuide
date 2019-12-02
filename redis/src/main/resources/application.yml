@@ -1,4 +1,6 @@
 spring:
+  resources:
+    static-locations: classpath:/META-INF/resources/,classpath:/resources/,classpath:/public/,classpath:/static/
   redis:
     # 使用数据库的索引编号，一个示例有16个数据库 0 到 15
     database: 0

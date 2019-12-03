@@ -1,0 +1,17 @@
+spring:
+  datasource:
+    url: jdbc:oracle:thin:@127.0.0.1:1521:orcl
+    username: nzdev
+    password: NZJRKJ_DEV
+    driver-class-name: oracle.jdbc.OracleDriver
+  jpa:
+    database-platform: org.hibernate.dialect.Oracle10gDialect
+    show-sql: true
+    properties:
+      #批量更新与插入
+      jdbc:
+        batch_size: 25
+        order_inserts: true
+        order_updates: true
+    # only dev
+    generate-ddl: true

@@ -1,0 +1,15 @@
+server:
+  port: 443
+  compression:
+    mime-types: text/plain,application/json,multipart/form-data
+    enabled: true
+  https:
+    enabled: true
+  ssl:
+    key-store: classpath:ssl/jdkhttps.p12
+    key-store-type: JKS
+    key-store-password: zhaolei
+    key-alias: tomcathttps
+spring:
+  resources:
+    static-locations: classpath:/META-INF/resources/,classpath:/resources/,classpath:/public/,classpath:/static/

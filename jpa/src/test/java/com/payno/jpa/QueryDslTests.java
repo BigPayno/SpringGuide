@@ -69,7 +69,8 @@ public class QueryDslTests {
     @Test
     public void predicate(){
         QQueryDsl queryDsl=QQueryDsl.queryDsl;
-        BooleanExpression predicate=queryDsl.updateTime.between(LocalDateTime.now().minusHours(3),LocalDateTime.now());
+        BooleanExpression predicate=queryDsl.updateTime.dayOfYear().between(0,365);
+        queryDsl.updateTime.between(LocalDateTime.now().minusHours(3),LocalDateTime.now());
         queryDslRepo.findAll(predicate);
     }
 

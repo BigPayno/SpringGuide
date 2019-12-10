@@ -16,6 +16,9 @@
         <module>jpa</module>
         <module>rocketmq</module>
         <module>webmvc</module>
+        <module>redis</module>
+        <module>shiro</module>
+        <module>https</module>
     </modules>
 
 </project>

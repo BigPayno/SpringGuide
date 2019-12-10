@@ -17,6 +17,10 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 @ConditionalOnProperty(name = "server.https.enabled",havingValue = "true")
 public class HttpsConfigurationSupport {
+    /**
+     * 在Tomcat中，Connector是用来创建Request
+     * Request是用来创建RequestFacade，门面模式
+     */
     @Bean
     public Connector connector(){
         Connector connector=new Connector("org.apache.coyote.http11.Http11NioProtocol");

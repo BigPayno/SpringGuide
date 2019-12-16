@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.time.LocalDate;
+
 /**
  * @author payno
  * @date 2019/11/26 17:02
@@ -18,7 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class ExceptionController {
     @GetMapping("{flag}")
     @Log
-    public Response<Boolean> var0(@PathVariable("flag")@CurrentUrl String flag) throws Exception{
+    public Response<Boolean> var0(@PathVariable("flag") String flag) throws Exception{
         System.out.println("hello!");
         System.out.println(flag);
         if("0".equals(flag)){
@@ -36,5 +38,11 @@ public class ExceptionController {
     public Response<Boolean> var2(@CurrentUrl String host) throws Exception{
         System.out.println(host);
         return Response.of(Boolean.TRUE);
+    }
+
+    @GetMapping("date/{bind}")
+    public Response<Void> date(@PathVariable("bind") LocalDate localDate){
+        System.out.println(localDate.toString());
+        return Response.ok();
     }
 }

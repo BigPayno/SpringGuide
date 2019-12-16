@@ -18,14 +18,15 @@ import org.springframework.stereotype.Component;
 @Component
 public class RepoLogRunner implements ApplicationRunner, ApplicationContextAware {
     private ApplicationContext contextHolder;
+
     @Override
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
-        contextHolder=applicationContext;
+        contextHolder = applicationContext;
     }
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
-        StringBuilder stringBuilder=new StringBuilder();
+        StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append(String.format("%nJpa Repos:"));
         contextHolder.getBeansOfType(Repository.class).entrySet()
                 .forEach(stringRepositoryEntry -> {

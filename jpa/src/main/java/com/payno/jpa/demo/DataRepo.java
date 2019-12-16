@@ -7,5 +7,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
  * @date 2019/11/28 11:51
  * @description
  */
-public interface DataRepo extends JpaRepository<Data,Long> {
+public interface DataRepo extends JpaRepository<Data, Long> {
 }

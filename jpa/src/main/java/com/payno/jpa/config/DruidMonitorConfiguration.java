@@ -18,7 +18,7 @@ import java.util.Map;
  * @description
  */
 @Configuration
-@ConditionalOnProperty(prefix = "spring.datasource.monitor.enabled",value = "true")
+@ConditionalOnProperty(prefix = "spring.datasource.monitor.enabled", value = "true")
 public class DruidMonitorConfiguration {
     /**
      * statViewServlet

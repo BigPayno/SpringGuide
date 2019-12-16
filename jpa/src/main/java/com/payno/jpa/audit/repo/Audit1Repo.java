@@ -8,5 +8,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
  * @date 2019/11/28 08:53
  * @description
  */
-public interface Audit1Repo extends JpaRepository<Audit1,Long> {
+public interface Audit1Repo extends JpaRepository<Audit1, Long> {
 }

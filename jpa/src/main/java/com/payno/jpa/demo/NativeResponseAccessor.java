@@ -7,5 +7,6 @@ package com.payno.jpa.demo;
  */
 public interface NativeResponseAccessor {
     void setNativeResponse(String response);
+
     String getNativeResponse();
 }

@@ -19,12 +19,13 @@ import javax.persistence.*;
 @Builder
 @Entity
 @Table(name = "Query_dsl")
-public class QueryDsl extends BaseDataModel{
+public class QueryDsl extends BaseDataModel {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String name;
     private int age;
+
     @Override
     public String[] ignoreProperties() {
         return ExampleIgnoreConfig.QUERY_DSL;

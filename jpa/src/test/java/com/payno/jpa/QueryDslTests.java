@@ -28,15 +28,17 @@ import java.util.stream.IntStream;
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest(classes = JpaApplication.class)
 public class QueryDslTests {
-    @Autowired QueryDslRepo queryDslRepo;
-    @PersistenceContext private EntityManager entityManager;
+    @Autowired
+    QueryDslRepo queryDslRepo;
+    @PersistenceContext
+    private EntityManager entityManager;
     private JPAQueryFactory queryFactory;
 
     @Test
-    public void insert(){
-        IntStream.range(0,25).forEach(num->{
-            QueryDsl queryDsl=QueryDsl.builder()
-                    .name(String.format("%s%d","payno",num)).age(num).build();
+    public void insert() {
+        IntStream.range(0, 25).forEach(num -> {
+            QueryDsl queryDsl = QueryDsl.builder()
+                    .name(String.format("%s%d", "payno", num)).age(num).build();
             queryDslRepo.save(queryDsl);
         });
     }
@@ -49,17 +51,17 @@ public class QueryDslTests {
      * 返回结果拼装
      */
     @Test
-    public void query(){
-        QQueryDsl query=QQueryDsl.queryDsl;
+    public void query() {
+        QQueryDsl query = QQueryDsl.queryDsl;
         queryFactory = new JPAQueryFactory(entityManager);
-        JPAQuery<Tuple> jpaQuery=queryFactory.select(query.id,query.name)
+        JPAQuery<Tuple> jpaQuery = queryFactory.select(query.id, query.name)
                 .from(query)
                 .where(query.updateTime.after(LocalDateTime.now().minusDays(1)))
                 .fetchAll();
-        QueryResults<Tuple> queryResults=jpaQuery.fetchResults();
-        List<Tuple> tuples=queryResults.getResults();
+        QueryResults<Tuple> queryResults = jpaQuery.fetchResults();
+        List<Tuple> tuples = queryResults.getResults();
         tuples.forEach(tuple -> {
-            System.out.printf("id %s,name %s %n",tuple.get(query.id),tuple.get(query.name));
+            System.out.printf("id %s,name %s %n", tuple.get(query.id), tuple.get(query.name));
         });
     }
 
@@ -67,16 +69,16 @@ public class QueryDslTests {
      * 时间范围查询
      */
     @Test
-    public void predicate(){
-        QQueryDsl queryDsl=QQueryDsl.queryDsl;
-        BooleanExpression predicate=queryDsl.updateTime.dayOfYear().between(0,365);
-        queryDsl.updateTime.between(LocalDateTime.now().minusHours(3),LocalDateTime.now());
+    public void predicate() {
+        QQueryDsl queryDsl = QQueryDsl.queryDsl;
+        BooleanExpression predicate = queryDsl.updateTime.dayOfYear().between(0, 365);
+        queryDsl.updateTime.between(LocalDateTime.now().minusHours(3), LocalDateTime.now());
         queryDslRepo.findAll(predicate);
     }
 
     @Test
-    public void reflect(){
-        String className=QueryDsl.class.getName();
+    public void reflect() {
+        String className = QueryDsl.class.getName();
 
     }
 }

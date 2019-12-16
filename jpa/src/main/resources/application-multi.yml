@@ -25,29 +25,29 @@ spring:
       generate-ddl: true
 
   datasource:
-   primary:
-     url: jdbc:oracle:thin:@127.0.0.1:1521:orcl
-     username: nzdev
-     password: NZJRKJ_DEV
-     driver-class-name: oracle.jdbc.OracleDriver
-     #durid
-     max-lifetime: 1765000
-     maximum-pool-size: 15
-     use-global-data-source-stat: true
-     filters: stat,wall
-     monitor:
-      enabled: false
-     type: com.alibaba.druid.pool.DruidDataSource
-   second:
-     url: jdbc:oracle:thin:@127.0.0.1:1521:orcl
-     username: nzdev
-     password: NZJRKJ_DEV
-     driver-class-name: oracle.jdbc.OracleDriver
-     #durid
-     max-lifetime: 1765000
-     maximum-pool-size: 15
-     use-global-data-source-stat: true
-     filters: stat,wall
-     monitor:
-      enabled: false
-     type: com.alibaba.druid.pool.DruidDataSource
+    primary:
+      url: jdbc:oracle:thin:@127.0.0.1:1521:orcl
+      username: nzdev
+      password: NZJRKJ_DEV
+      driver-class-name: oracle.jdbc.OracleDriver
+      #durid
+      max-lifetime: 1765000
+      maximum-pool-size: 15
+      use-global-data-source-stat: true
+      filters: stat,wall
+      monitor:
+        enabled: false
+      type: com.alibaba.druid.pool.DruidDataSource
+    second:
+      url: jdbc:oracle:thin:@127.0.0.1:1521:orcl
+      username: nzdev
+      password: NZJRKJ_DEV
+      driver-class-name: oracle.jdbc.OracleDriver
+      #durid
+      max-lifetime: 1765000
+      maximum-pool-size: 15
+      use-global-data-source-stat: true
+      filters: stat,wall
+      monitor:
+        enabled: false
+      type: com.alibaba.druid.pool.DruidDataSource

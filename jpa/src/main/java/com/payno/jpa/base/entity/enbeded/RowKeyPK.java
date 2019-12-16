@@ -20,6 +20,7 @@ import java.io.Serializable;
 public class RowKeyPK implements Serializable {
     private String IdCard;
     private long timestamp;
+
     public static RowKeyPK build(String idCard) {
         return new RowKeyPK(idCard, System.currentTimeMillis());
     }

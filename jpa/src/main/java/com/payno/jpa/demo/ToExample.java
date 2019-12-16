@@ -10,6 +10,8 @@ import org.springframework.data.domain.ExampleMatcher;
  */
 public interface ToExample {
     String[] ignoreProperties();
+
     <T extends ToExample> Example<T> toExample(ExampleMatcher matcher);
+
     <T extends ToExample> Example<T> toExample();
 }

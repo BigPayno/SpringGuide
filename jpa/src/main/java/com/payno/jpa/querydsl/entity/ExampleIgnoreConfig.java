@@ -7,7 +7,8 @@ package com.payno.jpa.querydsl.entity;
  */
 public final class ExampleIgnoreConfig {
     public static final String[] QUERY_DSL;
+
     static {
-        QUERY_DSL=new String[]{"age"};
+        QUERY_DSL = new String[]{"age"};
     }
 }

@@ -8,5 +8,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
  * @date 2019/11/27 16:19
  * @description
  */
-public interface NzCheck4Repo extends JpaRepository<NzCheck,String> {
+public interface NzCheck4Repo extends JpaRepository<NzCheck, String> {
 }

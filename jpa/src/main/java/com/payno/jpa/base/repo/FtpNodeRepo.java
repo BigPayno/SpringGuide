@@ -8,5 +8,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
  * @date 2019/11/27 16:00
  * @description
  */
-public interface FtpNodeRepo extends JpaRepository<FtpNode,String> {
+public interface FtpNodeRepo extends JpaRepository<FtpNode, String> {
 }

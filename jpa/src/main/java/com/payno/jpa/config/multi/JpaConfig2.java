@@ -34,12 +34,12 @@ import javax.sql.DataSource;
 public class JpaConfig2 {
     @Bean(name = "jpaProperties2")
     @ConfigurationProperties(MultiProperties.JPA_PREFIX2)
-    public JpaProperties jpaProperties(){
+    public JpaProperties jpaProperties() {
         return new JpaProperties();
     }
 
     @Bean("entityManagerFactory2")
-    public LocalContainerEntityManagerFactoryBean entityManagerFactory(@Qualifier("dateSource2") DataSource primaryDataSource,@Qualifier("jpaProperties2") JpaProperties jpaProperties, EntityManagerFactoryBuilder builder) {
+    public LocalContainerEntityManagerFactoryBean entityManagerFactory(@Qualifier("dateSource2") DataSource primaryDataSource, @Qualifier("jpaProperties2") JpaProperties jpaProperties, EntityManagerFactoryBuilder builder) {
         return builder
                 // 设置数据源
                 .dataSource(primaryDataSource)
@@ -52,12 +52,12 @@ public class JpaConfig2 {
     }
 
     @Bean(name = "entityManager2")
-    public EntityManager entityManager(@Qualifier("entityManagerFactory2")EntityManagerFactory factory) {
+    public EntityManager entityManager(@Qualifier("entityManagerFactory2") EntityManagerFactory factory) {
         return factory.createEntityManager();
     }
 
     @Bean(name = "transactionManager2")
-    public PlatformTransactionManager transactionManager(@Qualifier("entityManagerFactory2")EntityManagerFactory factory) {
+    public PlatformTransactionManager transactionManager(@Qualifier("entityManagerFactory2") EntityManagerFactory factory) {
         return new JpaTransactionManager(factory);
     }
 }

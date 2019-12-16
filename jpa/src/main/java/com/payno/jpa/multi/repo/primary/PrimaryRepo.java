@@ -8,5 +8,5 @@ import org.springframework.data.repository.CrudRepository;
  * @date 2019/12/5 14:33
  * @description
  */
-public interface PrimaryRepo extends CrudRepository<PrimaryModel,Long> {
+public interface PrimaryRepo extends CrudRepository<PrimaryModel, Long> {
 }

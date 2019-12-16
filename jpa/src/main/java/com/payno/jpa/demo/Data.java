@@ -10,7 +10,7 @@ import javax.persistence.*;
 @lombok.Data
 @Entity
 @Table(name = "DataModel")
-public class Data extends BaseDataModel{
+public class Data extends BaseDataModel {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;

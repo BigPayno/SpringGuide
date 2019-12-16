@@ -18,17 +18,16 @@ import java.util.function.Predicate;
 /**
  * @author payno
  * @date 2019/11/28 10:26
- * @description
- *      unique
- *
- *      SpringBoot 2.21
+ * @description unique
+ * <p>
+ * SpringBoot 2.21
  */
 @Setter
 @Getter
 @MappedSuperclass
 @EntityListeners(AuditingEntityListener.class)
-public abstract class BaseDataModel implements TimeFilter,NativeResponseAccessor,ToVo, ToExample {
-    public static final String BLANK="";
+public abstract class BaseDataModel implements TimeFilter, NativeResponseAccessor, ToVo, ToExample {
+    public static final String BLANK = "";
     @CreatedDate
     private LocalDateTime createTime;
     @LastModifiedDate
@@ -36,15 +35,16 @@ public abstract class BaseDataModel implements TimeFilter,NativeResponseAccessor
     @Version
     private long version;
     private String nativeResponse;
+
     @Override
     public boolean timeFilter(Predicate<LocalDateTime> predicate) {
         return predicate.test(updateTime);
     }
 
     @Override
-    public <T extends ToVo> BaseDataVo<T> toVo() throws OperationNotSupportedException{
+    public <T extends ToVo> BaseDataVo<T> toVo() throws OperationNotSupportedException {
         throw new OperationNotSupportedException(
-                String.format("the class of %s doesn't support generating vo!",this.getClass())
+                String.format("the class of %s doesn't support generating vo!", this.getClass())
         );
     }
 
@@ -56,17 +56,17 @@ public abstract class BaseDataModel implements TimeFilter,NativeResponseAccessor
     @Override
     @SuppressWarnings("unchecked")
     public <T extends ToExample> Example<T> toExample() {
-        ExampleMatcher exampleMatcher=ExampleMatcher.matching()
+        ExampleMatcher exampleMatcher = ExampleMatcher.matching()
                 .withIgnoreNullValues();
-        if(ignoreProperties()!=null&&ignoreProperties().length!=0){
-            exampleMatcher=exampleMatcher.withIgnorePaths(ignoreProperties());
+        if (ignoreProperties() != null && ignoreProperties().length != 0) {
+            exampleMatcher = exampleMatcher.withIgnorePaths(ignoreProperties());
         }
-        return Example.of((T)this,exampleMatcher);
+        return Example.of((T) this, exampleMatcher);
     }
 
     @Override
     @SuppressWarnings("unchecked")
     public <T extends ToExample> Example<T> toExample(ExampleMatcher matcher) {
-        return Example.of((T)this,matcher);
+        return Example.of((T) this, matcher);
     }
 }

@@ -18,27 +18,27 @@ import java.util.Optional;
 @Entity(name = "Node")
 @Inheritance(strategy = InheritanceType.JOINED)
 public class Node {
-	@Id
-	@GeneratedValue(generator = "UUIDGenerator")
-	@GenericGenerator(name = "UUIDGenerator", strategy = "com.payno.jpa.util.UUIDGenerator")
-	private String nodeId;
-	private String nodeName;
-	private String nodeType;
-	private long dateMinis;
-	private String flowId;
-	@Transient
-	@JsonIgnore
-	private String localDate;
-	@Transient
-	@JsonIgnore
-	private Optional<String> source;
-	@Transient
-	@JsonIgnore
-	private Optional<String> sink;
-	@Transient
-	@JsonIgnore
-	private boolean noError;
-	@Transient
-	@JsonIgnore
-	private boolean needMessage;
+    @Id
+    @GeneratedValue(generator = "UUIDGenerator")
+    @GenericGenerator(name = "UUIDGenerator", strategy = "com.payno.jpa.util.UUIDGenerator")
+    private String nodeId;
+    private String nodeName;
+    private String nodeType;
+    private long dateMinis;
+    private String flowId;
+    @Transient
+    @JsonIgnore
+    private String localDate;
+    @Transient
+    @JsonIgnore
+    private Optional<String> source;
+    @Transient
+    @JsonIgnore
+    private Optional<String> sink;
+    @Transient
+    @JsonIgnore
+    private boolean noError;
+    @Transient
+    @JsonIgnore
+    private boolean needMessage;
 }

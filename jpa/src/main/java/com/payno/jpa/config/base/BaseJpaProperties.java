@@ -6,7 +6,7 @@ package com.payno.jpa.config.base;
  * @description
  */
 public final class BaseJpaProperties {
-    public static final String BASE_PACKAGE="com.payno.jpa";
-    public static final String JPA_CONFIG_PREFIX="spring.jpa";
+    public static final String BASE_PACKAGE = "com.payno.jpa";
+    public static final String JPA_CONFIG_PREFIX = "spring.jpa";
     //public static final String DATA_SOURCE_PREFIX="spring.datasource";
 }

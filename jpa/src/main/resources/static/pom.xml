@@ -171,56 +171,56 @@
     </dependencies>
 
     <build>
-        <plugins> 
-       		 <plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
-			</plugin>
-        	 <plugin>
-		        <artifactId>maven-resources-plugin</artifactId>
-		        <executions>
-		            <execution> <!-- 复制配置文件 -->
-		                <id>copy-resources</id>
-		                <phase>package</phase>
-		                <goals>
-		                    <goal>copy-resources</goal>
-		                </goals>
-		                <configuration>
-		                    <resources>
-		                        <resource>
-		                            <directory>src/main/resources</directory>
-		                            <includes>
-		                                <include>*.sh</include>
-										<include>config/**</include>
-										<include>baffle/**</include>
-										<include>py/**</include>
-		                            </includes>
-		                        </resource>
-		                    </resources>
-		                    <outputDirectory>${project.build.directory}/resources</outputDirectory>
-		                </configuration>
-		            </execution>
-		        </executions>
-		    </plugin>
-		    
+        <plugins>
             <plugin>
-            	<groupId>org.apache.maven.plugins</groupId>
-            	<artifactId>maven-assembly-plugin</artifactId>
-            	<configuration>
-            		<appendAssemblyId>flase</appendAssemblyId>
-            		<descriptors>
-            			<descriptor>src/main/resources/config/build.xml</descriptor>
-            		</descriptors>
-            	</configuration>
-            	<executions>
-            		<execution>
-            			<id>make-assembly</id>
-            			<phase>package</phase>
-            			<goals>
-            				<goal>single</goal>
-            			</goals>
-            		</execution>
-            	</executions>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <artifactId>maven-resources-plugin</artifactId>
+                <executions>
+                    <execution> <!-- 复制配置文件 -->
+                        <id>copy-resources</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <configuration>
+                            <resources>
+                                <resource>
+                                    <directory>src/main/resources</directory>
+                                    <includes>
+                                        <include>*.sh</include>
+                                        <include>config/**</include>
+                                        <include>baffle/**</include>
+                                        <include>py/**</include>
+                                    </includes>
+                                </resource>
+                            </resources>
+                            <outputDirectory>${project.build.directory}/resources</outputDirectory>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <configuration>
+                    <appendAssemblyId>flase</appendAssemblyId>
+                    <descriptors>
+                        <descriptor>src/main/resources/config/build.xml</descriptor>
+                    </descriptors>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>make-assembly</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
             <plugin>
                 <groupId>com.mysema.maven</groupId>

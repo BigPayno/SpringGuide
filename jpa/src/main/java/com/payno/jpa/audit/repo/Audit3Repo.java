@@ -8,5 +8,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
  * @date 2019/11/28 10:02
  * @description
  */
-public interface Audit3Repo extends JpaRepository<Audit3,Long> {
+public interface Audit3Repo extends JpaRepository<Audit3, Long> {
 }

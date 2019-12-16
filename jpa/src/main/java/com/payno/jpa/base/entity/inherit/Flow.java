@@ -17,14 +17,14 @@ import java.util.Set;
 @Entity(name = "Flow")
 @NamedEntityGraph(name = "Flow.Graph", attributeNodes = {@NamedAttributeNode("nodes")})
 public class Flow {
-	@Id
-	@GeneratedValue(generator = "UUIDGenerator")
-	@GenericGenerator(name = "UUIDGenerator", strategy = "com.payno.jpa.util.UUIDGenerator")
-	private String flowId;
-	private String flowCode;
-	private String flowDefinition;
-	private String localDate;
-	private boolean needMessage;
-	@OneToMany(mappedBy = "flowId")
-	private Set<Node> nodes;
+    @Id
+    @GeneratedValue(generator = "UUIDGenerator")
+    @GenericGenerator(name = "UUIDGenerator", strategy = "com.payno.jpa.util.UUIDGenerator")
+    private String flowId;
+    private String flowCode;
+    private String flowDefinition;
+    private String localDate;
+    private boolean needMessage;
+    @OneToMany(mappedBy = "flowId")
+    private Set<Node> nodes;
 }

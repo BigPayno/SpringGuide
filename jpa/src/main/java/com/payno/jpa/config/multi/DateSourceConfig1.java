@@ -21,7 +21,7 @@ public class DateSourceConfig1 {
     @Bean
     @Primary
     @ConfigurationProperties(MultiProperties.DATA_SOURCE_PREFIX)
-    public DataSourceProperties dataSourceProperties(){
+    public DataSourceProperties dataSourceProperties() {
         return new DataSourceProperties();
     }
 

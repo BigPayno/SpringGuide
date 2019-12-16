@@ -18,9 +18,9 @@ import javax.sql.DataSource;
 @Profile("multi")
 @Configuration
 public class DateSourceConfig2 {
-    @Bean(name ="dataSourceProperties2" )
+    @Bean(name = "dataSourceProperties2")
     @ConfigurationProperties(MultiProperties.DATA_SOURCE_PREFIX2)
-    public DataSourceProperties dataSourceProperties(){
+    public DataSourceProperties dataSourceProperties() {
         return new DataSourceProperties();
     }
 

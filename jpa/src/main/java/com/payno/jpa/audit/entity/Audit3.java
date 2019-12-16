@@ -4,9 +4,6 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.annotation.LastModifiedDate;
-import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -14,9 +11,8 @@ import java.time.LocalDateTime;
 /**
  * @author payno
  * @date 2019/11/27 16:57
- * @description
- *      如果该类是MappedSuperclass注解的抽象类
- *      配合pre相关注解可以实现很多事情
+ * @description 如果该类是MappedSuperclass注解的抽象类
+ * 配合pre相关注解可以实现很多事情
  */
 @Data
 @NoArgsConstructor
@@ -48,17 +44,17 @@ public class Audit3 {
     private long version;
 
     @PrePersist
-    public void prePersist(){
-        this.creationTime=LocalDateTime.now();
+    public void prePersist() {
+        this.creationTime = LocalDateTime.now();
     }
 
     @PreUpdate
-    public void preUpdate(){
-        this.modificationTime=LocalDateTime.now();
+    public void preUpdate() {
+        this.modificationTime = LocalDateTime.now();
     }
 
     @PreRemove
-    public void preRemove(){
+    public void preRemove() {
 
     }
 }

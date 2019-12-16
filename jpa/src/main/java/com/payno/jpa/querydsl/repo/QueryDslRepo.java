@@ -9,5 +9,5 @@ import org.springframework.data.querydsl.QuerydslPredicateExecutor;
  * @date 2019/11/28 14:41
  * @description
  */
-public interface QueryDslRepo extends JpaRepository<QueryDsl,Long>, QuerydslPredicateExecutor<QueryDsl> {
+public interface QueryDslRepo extends JpaRepository<QueryDsl, Long>, QuerydslPredicateExecutor<QueryDsl> {
 }

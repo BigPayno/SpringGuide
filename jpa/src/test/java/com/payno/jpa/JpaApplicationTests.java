@@ -27,8 +27,8 @@ class JpaApplicationTests {
      * 插入时自带时间
      */
     @Test
-    void audit1Save() throws Exception{
-        Audit1 audit1=Audit1.builder().description("nothing").title("no").build();
+    void audit1Save() throws Exception {
+        Audit1 audit1 = Audit1.builder().description("nothing").title("no").build();
         audit1Repo.save(audit1);
         System.out.println(audit1);
     }
@@ -38,8 +38,8 @@ class JpaApplicationTests {
      * 应该是生成代理对象persist，所以代码中的对象时间及版本无变化
      */
     @Test
-    void audit1Update(){
-        Audit1 audit1=audit1Repo.findById(Long.valueOf(9)).get();
+    void audit1Update() {
+        Audit1 audit1 = audit1Repo.findById(Long.valueOf(9)).get();
         audit1.setTitle("new");
         System.out.println(audit1);
         audit1Repo.save(audit1);
@@ -47,8 +47,8 @@ class JpaApplicationTests {
     }
 
     @Test
-    void audit2CreateBy(){
-        Audit2 audit2=Audit2.builder().title("test").build();
+    void audit2CreateBy() {
+        Audit2 audit2 = Audit2.builder().title("test").build();
         audit2Repo.save(audit2);
         System.out.println(audit2);
     }
@@ -57,10 +57,10 @@ class JpaApplicationTests {
      * 看看忽略路径是否有用,以及抽象类的某些预定功能
      */
     @Test
-    void data(){
+    void data() {
         dataRepo.save(new Data());
         dataRepo.save(new Data());
-        Data example=new Data();
+        Data example = new Data();
         example.setType(2);
         dataRepo.findAll(example.toExample()).forEach(System.out::println);
     }

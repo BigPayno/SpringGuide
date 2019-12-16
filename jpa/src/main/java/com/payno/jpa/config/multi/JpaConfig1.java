@@ -33,7 +33,7 @@ public class JpaConfig1 {
     @Bean
     @Primary
     @ConfigurationProperties(MultiProperties.JPA_PREFIX1)
-    public JpaProperties jpaProperties(){
+    public JpaProperties jpaProperties() {
         return new JpaProperties();
     }
 

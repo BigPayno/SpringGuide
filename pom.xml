@@ -19,6 +19,8 @@
         <module>redis</module>
         <module>shiro</module>
         <module>https</module>
+        <module>cache</module>
+        <module>session</module>
     </modules>
 
 </project>

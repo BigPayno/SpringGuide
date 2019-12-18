@@ -6,6 +6,7 @@ import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.alibaba.fastjson.support.config.FastJsonConfig;
 import com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter;
 import com.payno.webmvc.web.bind.SecretReturnHandler;
+import com.payno.webmvc.web.bind.StringPaynoMessageConverter;
 import com.payno.webmvc.web.bind.StringToLocalDateConverter;
 import com.payno.webmvc.web.bind.UrlResolver;
 import com.payno.webmvc.web.filter.TimeFilter;
@@ -20,6 +21,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.format.FormatterRegistry;
 import org.springframework.http.converter.HttpMessageConverter;
+import org.springframework.http.converter.StringHttpMessageConverter;
 import org.springframework.web.method.support.HandlerMethodArgumentResolver;
 import org.springframework.web.method.support.HandlerMethodReturnValueHandler;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
@@ -157,6 +159,8 @@ public class WebConfig extends WebMvcConfigurationSupport {
      */
     @Override
     protected void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
+        converters.add(new StringPaynoMessageConverter());
+        converters.add(new StringHttpMessageConverter());
         super.configureMessageConverters(converters);
     }
 

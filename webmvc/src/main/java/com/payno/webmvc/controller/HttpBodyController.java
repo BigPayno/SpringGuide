@@ -1,9 +1,9 @@
 package com.payno.webmvc.controller;
 
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.payno.webmvc.web.config.ApplicationContextHolder;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.converter.HttpMessageConverter;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @author payno
@@ -12,7 +12,10 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping("body")
-public class HttpBodyController {
+public class HttpBodyController{
+    @Autowired
+    ApplicationContextHolder holder;
+
     @PostMapping(value = "/payno")
     public String easyPayno(@RequestBody String body){
         System.out.println(body);
@@ -23,5 +26,23 @@ public class HttpBodyController {
     public String easyText(@RequestBody String body){
         System.out.println(body);
         return body;
+    }
+
+    @GetMapping(value = "/all")
+    public void supportBody(){
+        holder.getContext().getBeansOfType(HttpMessageConverter.class)
+                .entrySet().forEach(entry->{
+            System.out.printf("Converter[%s]:[%s]%n",entry.getKey(),entry.getValue());
+        });
+    }
+
+    @PostMapping(value = "/stream")
+    public byte[] easyStream(){
+        return "hello".getBytes();
+    }
+
+    @PostMapping(value = "/stream/upload")
+    public void easyStreamUpload(@RequestBody byte[] bytes){
+        System.out.println(new String(bytes));
     }
 }

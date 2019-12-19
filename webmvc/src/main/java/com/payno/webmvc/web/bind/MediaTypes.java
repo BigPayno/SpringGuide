@@ -10,4 +10,5 @@ import org.springframework.http.MediaType;
  */
 public final class MediaTypes {
     public static MediaType PAYNO=new MediaType("application","payno", Charsets.UTF_8);
+    public static MediaType FILE=new MediaType("application","file",Charsets.UTF_8);
 }

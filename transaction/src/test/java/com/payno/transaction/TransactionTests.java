@@ -1,7 +1,6 @@
 package com.payno.transaction;
 
 import com.payno.transaction.demo.Service;
-import org.hibernate.Transaction;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +21,5 @@ class TransactionTests {
             //确实回滚了
         }
         System.out.println(val);
-        Transaction
     }
 }

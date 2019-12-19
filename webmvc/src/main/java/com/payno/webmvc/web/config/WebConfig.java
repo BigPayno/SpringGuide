@@ -5,21 +5,19 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.alibaba.fastjson.support.config.FastJsonConfig;
 import com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter;
-import com.payno.webmvc.web.bind.SecretReturnHandler;
-import com.payno.webmvc.web.bind.StringPaynoMessageConverter;
-import com.payno.webmvc.web.bind.StringToLocalDateConverter;
-import com.payno.webmvc.web.bind.UrlResolver;
+import com.payno.webmvc.web.bind.*;
 import com.payno.webmvc.web.filter.TimeFilter;
 import com.payno.webmvc.web.interceptor.LogAdapterInterceptor;
 import com.payno.webmvc.web.interceptor.TimeInterceptor;
 import lombok.Getter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
-import org.springframework.boot.autoconfigure.http.HttpMessageConverters;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.format.FormatterRegistry;
+import org.springframework.http.converter.ByteArrayHttpMessageConverter;
+import org.springframework.http.converter.FormHttpMessageConverter;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.StringHttpMessageConverter;
 import org.springframework.web.method.support.HandlerMethodArgumentResolver;
@@ -119,7 +117,7 @@ public class WebConfig extends WebMvcConfigurationSupport {
      */
     @Bean
     @ConditionalOnClass({JSON.class})
-    public HttpMessageConverters fastJsonHttpMessageConverters(){
+    public HttpMessageConverter<?> fastJsonHttpMessageConverters(){
         FastJsonHttpMessageConverter fastConverter = new FastJsonHttpMessageConverter();
         FastJsonConfig fastJsonConfig = new FastJsonConfig();
         fastJsonConfig.setSerializerFeatures(
@@ -128,7 +126,7 @@ public class WebConfig extends WebMvcConfigurationSupport {
         );
         fastConverter.setFastJsonConfig(fastJsonConfig);
         HttpMessageConverter<?> converter = fastConverter;
-        return new HttpMessageConverters(converter);
+        return fastConverter;
     }
     /**
      * 配置将HttpMessage转换为java对象的转换器
@@ -161,6 +159,10 @@ public class WebConfig extends WebMvcConfigurationSupport {
     protected void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
         converters.add(new StringPaynoMessageConverter());
         converters.add(new StringHttpMessageConverter());
+        converters.add(new XmlMessageConverter());
+        converters.add(new ByteArrayHttpMessageConverter());
+        converters.add(new FormHttpMessageConverter());
+        converters.add(fastJsonHttpMessageConverters());
         super.configureMessageConverters(converters);
     }
 

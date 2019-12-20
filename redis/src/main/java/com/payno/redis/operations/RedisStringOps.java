@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.google.common.collect.ImmutableList;
 import com.payno.redis.operations.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Profile;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.data.redis.core.ValueOperations;
@@ -27,6 +28,7 @@ import org.springframework.stereotype.Component;
  *     高效的计算字符串长度(时间复杂度为O(1))
  *     高效的追加字符串操作。
  */
+@Profile("jedis")
 @Component
 public class RedisStringOps {
     @Autowired

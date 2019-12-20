@@ -1,6 +1,7 @@
 package com.payno.redis.operations;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Profile;
 import org.springframework.data.redis.core.ListOperations;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Component;
@@ -16,6 +17,7 @@ import javax.annotation.PostConstruct;
  *  edis将为该键创建一个新的链表。与此相反，如果链表中所有的元素均被移除，那么该键
  *  也将会被从数据库中删除。
  */
+@Profile("jedis")
 @Component
 public class RedisListOps {
     @Autowired

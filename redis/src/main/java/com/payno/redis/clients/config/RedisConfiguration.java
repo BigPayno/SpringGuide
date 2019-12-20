@@ -3,6 +3,7 @@ package com.payno.redis.clients.config;
 import com.alibaba.fastjson.support.spring.FastJsonRedisSerializer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.StringRedisTemplate;
@@ -16,6 +17,7 @@ import org.springframework.data.redis.serializer.StringRedisSerializer;
  * @description
  *
  */
+@Profile("jedis")
 @Configuration
 public class RedisConfiguration {
     private static final RedisSerializer<String> STRING_REDIS_SERIALIZER = new StringRedisSerializer();

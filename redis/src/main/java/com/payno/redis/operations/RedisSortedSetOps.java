@@ -1,6 +1,7 @@
 package com.payno.redis.operations;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Profile;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.data.redis.core.ZSetOperations;
 import org.springframework.stereotype.Component;
@@ -12,6 +13,7 @@ import javax.annotation.PostConstruct;
  * @date 2019/12/1 20:52
  * @description
  */
+@Profile("jedis")
 @Component
 public class RedisSortedSetOps {
     @Autowired

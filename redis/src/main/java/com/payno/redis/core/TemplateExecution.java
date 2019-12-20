@@ -1,4 +1,4 @@
-package com.payno.redis.executes;
+package com.payno.redis.core;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
@@ -15,7 +15,7 @@ import java.util.List;
  * @date 2019/12/1 21:21
  * @description
  */
-public class ExecGuide {
+public class TemplateExecution {
     @Autowired
     StringRedisTemplate stringRedisTemplate;
     /**
@@ -63,6 +63,12 @@ public class ExecGuide {
      * 4.WATCH类似于乐观锁机制里的版本号。
      */
     public void transactions(){
+        /**
+         * 实际场景下，如果胖友有 Redis 事务的诉求，建议把事务的、和非事务的 RedisTemplate 拆成两个连接池，相互独立。主要原因有两个：
+         *
+         *     1）Spring Data Redis 的事务设计，是将其融入到 Spring 整个 Transaction 当中。一般来说，Spring Transaction 中，肯定会存在数据库的 Transaction 。考虑到数据库操作相比 Redis 来说，肯定是慢得多，那么就会导致 Redis 的 Connection 一直被当前 Transaction 占用着。
+         *     2）How can i eliminate getting junk value through redis get command?
+         */
         stringRedisTemplate.multi();
         stringRedisTemplate.exec();
         stringRedisTemplate.discard();

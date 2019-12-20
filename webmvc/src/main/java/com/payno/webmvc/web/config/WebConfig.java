@@ -119,12 +119,12 @@ public class WebConfig extends WebMvcConfigurationSupport {
     @ConditionalOnClass({JSON.class})
     public HttpMessageConverter<?> fastJsonHttpMessageConverters(){
         FastJsonHttpMessageConverter fastConverter = new FastJsonHttpMessageConverter();
-        FastJsonConfig fastJsonConfig = new FastJsonConfig();
+        /*FastJsonConfig fastJsonConfig = new FastJsonConfig();
         fastJsonConfig.setSerializerFeatures(
                 SerializerFeature.PrettyFormat,
                 SerializerFeature.WriteClassName
         );
-        fastConverter.setFastJsonConfig(fastJsonConfig);
+        fastConverter.setFastJsonConfig(fastJsonConfig);*/
         HttpMessageConverter<?> converter = fastConverter;
         return fastConverter;
     }
@@ -166,9 +166,14 @@ public class WebConfig extends WebMvcConfigurationSupport {
         super.configureMessageConverters(converters);
     }
 
+    @Bean
+    public SecretReturnHandler secretReturnHandler(){
+        return new SecretReturnHandler();
+    }
+
     @Override
     protected void addReturnValueHandlers(List<HandlerMethodReturnValueHandler> returnValueHandlers) {
-        returnValueHandlers.add(new SecretReturnHandler());
+        returnValueHandlers.add(secretReturnHandler());
         super.addReturnValueHandlers(returnValueHandlers);
     }
 }

@@ -20,6 +20,7 @@ import org.springframework.http.converter.ByteArrayHttpMessageConverter;
 import org.springframework.http.converter.FormHttpMessageConverter;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.StringHttpMessageConverter;
+import org.springframework.http.converter.xml.MappingJackson2XmlHttpMessageConverter;
 import org.springframework.web.method.support.HandlerMethodArgumentResolver;
 import org.springframework.web.method.support.HandlerMethodReturnValueHandler;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
@@ -27,6 +28,7 @@ import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
 
+import java.io.Serializable;
 import java.util.Collections;
 import java.util.List;
 
@@ -119,12 +121,11 @@ public class WebConfig extends WebMvcConfigurationSupport {
     @ConditionalOnClass({JSON.class})
     public HttpMessageConverter<?> fastJsonHttpMessageConverters(){
         FastJsonHttpMessageConverter fastConverter = new FastJsonHttpMessageConverter();
-        /*FastJsonConfig fastJsonConfig = new FastJsonConfig();
+        FastJsonConfig fastJsonConfig = new FastJsonConfig();
         fastJsonConfig.setSerializerFeatures(
-                SerializerFeature.PrettyFormat,
-                SerializerFeature.WriteClassName
+                SerializerFeature.PrettyFormat
         );
-        fastConverter.setFastJsonConfig(fastJsonConfig);*/
+        fastConverter.setFastJsonConfig(fastJsonConfig);
         HttpMessageConverter<?> converter = fastConverter;
         return fastConverter;
     }

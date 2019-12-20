@@ -14,6 +14,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Secret {
-    @Encryption(from = 2,to = 4)
+    @Encryption
     private String psd;
 }

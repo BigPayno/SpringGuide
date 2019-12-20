@@ -45,7 +45,7 @@ public class SecretReturnHandler implements HandlerMethodReturnValueHandler {
      * 替换目标字符串
      */
     private void encryption(Object object){
-        for(Field field:object.getClass().getDeclaredFields()){
+        /*for(Field field:object.getClass().getDeclaredFields()){
             Encryption encryption=field.getAnnotation(Encryption.class);
             if(encryption!=null){
                if(encryption.from()==-1&&encryption.to()==-1){
@@ -64,6 +64,6 @@ public class SecretReturnHandler implements HandlerMethodReturnValueHandler {
                    }
                }
             }
-        }
+        }*/
     }
 }

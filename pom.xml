@@ -21,6 +21,7 @@
         <module>https</module>
         <module>cache</module>
         <module>session</module>
+        <module>swagger</module>
     </modules>
 
 </project>

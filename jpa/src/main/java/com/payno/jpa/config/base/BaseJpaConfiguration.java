@@ -30,7 +30,7 @@ import javax.sql.DataSource;
 @EnableTransactionManagement
 @EnableJpaAuditing
 @EnableJpaRepositories(
-        basePackages = BaseJpaProperties.BASE_PACKAGE)
+        basePackages = {BaseJpaProperties.BASE_PACKAGE,"com.payno.jpa.logicdelete"})
 public class BaseJpaConfiguration {
 
     @Autowired

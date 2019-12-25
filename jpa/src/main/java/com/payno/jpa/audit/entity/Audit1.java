@@ -1,6 +1,7 @@
 package com.payno.jpa.audit.entity;
 
 import lombok.*;
+import org.hibernate.validator.HibernateValidator;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;

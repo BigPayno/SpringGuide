@@ -22,6 +22,7 @@
         <module>cache</module>
         <module>session</module>
         <module>swagger</module>
+        <module>dubbo</module>
     </modules>
 
 </project>

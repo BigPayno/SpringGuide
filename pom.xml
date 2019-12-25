@@ -23,6 +23,7 @@
         <module>session</module>
         <module>swagger</module>
         <module>dubbo</module>
+        <module>zookeeper</module>
     </modules>
 
 </project>

@@ -1,8 +1,6 @@
 package client;
 
 import com.google.common.base.Stopwatch;
-import com.google.common.primitives.Bytes;
-import org.apache.curator.framework.CuratorFramework;
 import org.apache.curator.framework.CuratorFrameworkFactory;
 import org.apache.curator.framework.CuratorTempFramework;
 import org.apache.curator.retry.RetryOneTime;
@@ -16,10 +14,10 @@ import java.util.concurrent.TimeUnit;
  * @date 2019/12/25 16:43
  * @description
  */
-public class CuratorFactory {
+public class CuratorFrameworkGuide {
     @Test
     public void builder(){
-        CuratorFramework framework=CuratorFrameworkFactory.builder()
+        org.apache.curator.framework.CuratorFramework framework=CuratorFrameworkFactory.builder()
                 .connectString("112.124.200.92:2181")
                 .sessionTimeoutMs(60000)
                 .connectionTimeoutMs(15000)

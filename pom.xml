@@ -24,6 +24,7 @@
         <module>swagger</module>
         <module>dubbo</module>
         <module>zookeeper</module>
+        <module>boot</module>
     </modules>
 
 </project>

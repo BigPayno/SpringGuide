@@ -1,7 +1,8 @@
-package com.payno.boot.commmon;
+package com.payno.boot.config;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 
 /**
  * @author payno
@@ -9,6 +10,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @description
  */
 @SpringBootApplication
+@EnableConfigurationProperties
 public class BootApplication {
     public static void main(String[] args) {
         SpringApplication.run(BootApplication.class);

@@ -7,6 +7,8 @@ binder:
       t:
         name: payno
         password: chad
+    binder-generic2:
+      t: hello,chad
     binder-generic-collection:
       users:
         - name: payno1

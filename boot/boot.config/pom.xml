@@ -5,9 +5,9 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.payno</groupId>
-    <artifactId>boot.common</artifactId>
+    <artifactId>boot.config</artifactId>
     <version>1.0.0</version>
-    <name>boot.common</name>
+    <name>boot.config</name>
     <description>Demo project for Spring Boot</description>
 
     <build>
@@ -46,6 +46,12 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <version>2.2.2.RELEASE</version>
+        </dependency>
+
+        <dependency>
+            <groupId>cn.hutool</groupId>
+            <artifactId>hutool-all</artifactId>
+            <version>5.0.7</version>
         </dependency>
     </dependencies>
 </project>

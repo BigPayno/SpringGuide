@@ -1,8 +1,10 @@
-package com.payno.boot.commmon.binder;
+package com.payno.boot.config.binder;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.stereotype.Component;
 
 /**
  * @author payno
@@ -12,6 +14,8 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Component
+@ConfigurationProperties("binder.object.binder-user")
 public class BinderUser {
     String name;
     String password;

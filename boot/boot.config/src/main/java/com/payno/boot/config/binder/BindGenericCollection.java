@@ -1,4 +1,4 @@
-package com.payno.boot.commmon.binder;
+package com.payno.boot.config.binder;
 
 import lombok.Data;
 

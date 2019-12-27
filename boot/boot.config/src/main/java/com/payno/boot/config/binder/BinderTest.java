@@ -1,22 +1,15 @@
-package com.payno.boot.commmon.binder;
+package com.payno.boot.config.binder;
 
-import com.payno.boot.commmon.BootApplication;
+import com.payno.boot.config.BootApplication;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.ApplicationRunner;
-import org.springframework.boot.context.properties.bind.BindContext;
-import org.springframework.boot.context.properties.bind.BindHandler;
 import org.springframework.boot.context.properties.bind.Bindable;
 import org.springframework.boot.context.properties.bind.Binder;
-import org.springframework.boot.context.properties.source.ConfigurationPropertyName;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.core.ResolvableType;
 import org.springframework.core.env.Environment;
-import org.springframework.stereotype.Component;
 import org.springframework.test.context.junit4.SpringRunner;
-
-import java.util.List;
 
 /**
  * @author payno
@@ -53,12 +46,36 @@ public class BinderTest {
         System.out.println(generic);
 
         /**
-         * 绑定值
+         * 绑定值，普通对象
+         *     Class<T> type = instance.getClass()
+         *     return of(type).withExistingValue(instance)
          */
         BinderUser binderUser=new BinderUser();
         Binder.get(environment)
                 .bind("binder.object.binder-user",Bindable.ofInstance(binderUser));
         System.out.println(binderUser);
+
+        /**
+         * 绑定值，泛型对象,使用withExistingValue绑定已有对象
+         */
+        BinderGeneric<BinderUser> binderGeneric=new BinderGeneric<>();
+        ResolvableType type=ResolvableType.forClassWithGenerics(BinderGeneric.class,BinderUser.class);
+        Binder.get(environment)
+                .bind("binder.object.binder-generic",Bindable.of(type).withExistingValue(binderGeneric))
+                .get();
+        System.out.println(binderGeneric);
+
+        /**
+         * 查看是否可以基于ResolvedType.forInstance
+         * 来构建自由的绑定
+         */
+        BinderGeneric<String> binderGeneric2=new BinderGeneric<>();
+        Binder.get(environment)
+                .bind(
+                        "binder.object.binder-generic2",
+                        Bindable.of(ResolvableType.forInstance(binderGeneric2)).withExistingValue(binderGeneric2)
+                );
+        System.out.println(binderGeneric2);
     }
 
     @Test

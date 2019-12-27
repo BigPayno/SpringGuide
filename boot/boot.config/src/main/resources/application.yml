@@ -1,0 +1,30 @@
+binder:
+  object:
+    binder-user:
+      name: payno
+      password: chad
+    binder-generic:
+      t:
+        name: payno
+        password: chad
+    binder-generic2:
+      t: hello,chad
+    binder-generic-collection:
+      users:
+        - name: payno1
+          password: chad1
+        - name: payno2
+          password: chad2
+  collection:
+    list:
+      - a
+      - b
+      - c
+    map:
+      a: 1
+      b: 2
+      c: 3
+    set:
+      - 1
+      - 2
+      - 3

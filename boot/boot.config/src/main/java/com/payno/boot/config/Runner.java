@@ -1,4 +1,4 @@
-package com.payno.boot.commmon;
+package com.payno.boot.config;
 
 import com.payno.boot.api.Print;
 import org.springframework.beans.factory.annotation.Autowired;

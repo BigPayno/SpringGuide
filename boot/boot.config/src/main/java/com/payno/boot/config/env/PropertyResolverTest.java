@@ -8,15 +8,13 @@ import org.springframework.boot.context.properties.bind.Binder;
 import org.springframework.boot.env.YamlPropertySourceLoader;
 import org.springframework.core.ResolvableType;
 import org.springframework.core.convert.converter.Converter;
+import org.springframework.core.convert.support.DefaultConversionService;
 import org.springframework.core.env.*;
 import org.springframework.core.io.ClassPathResource;
-import org.springframework.core.io.support.ResourcePropertySource;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.Collections;
 import java.util.List;
-import java.util.Map;
 
 /**
  * @author payno
@@ -51,9 +49,10 @@ public class PropertyResolverTest {
          * SomethingWrong
          */
         ConfigurablePropertyResolver propertyResolver=(ConfigurablePropertyResolver)resolver;
+        propertyResolver.setConversionService(new DefaultConversionService());
         System.out.println(propertyResolver.getConversionService());
         propertyResolver.getConversionService().addConverter(
-                (Converter<String, LocalDate>)  str-> LocalDate.parse(str, DateTimeFormatter.ofPattern("yyyyMMdd")));
+                String.class,LocalDate.class,(Converter<String, LocalDate>)  str-> LocalDate.parse(str, DateTimeFormatter.ofPattern("yyyy-MM-dd")));
         LocalDate localDate=propertyResolver.getProperty("date",LocalDate.class);
         System.out.println(localDate);
     }

@@ -19,4 +19,12 @@ public class EnvMain {
      *
      * Profile：剖面，只有激活的剖面的组件/配置才会注册到Spring容器，类似于maven中profile
      */
+
+    /**
+     * SpringMvc Binder
+     *
+     * 1.@InitBinder
+     * 2.@RequestBody && Format/Converter SPI
+     * 3.WebBindingInitializer
+     */
 }

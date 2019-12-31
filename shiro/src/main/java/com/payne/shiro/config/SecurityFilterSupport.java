@@ -26,6 +26,7 @@ public class SecurityFilterSupport {
     /**
      * 非常重要一点，这里使用的FactoryBean，所以注入的Filter是在运行时生成的
      * 如果用组件注入，最后会报错
+     * 这是基于Spring的类，继承了FactoryBean与PostProcessor
      */
     @Bean
     public ShiroFilterFactoryBean shiroFilterFactoryBean(SecurityManager securityManager) {

@@ -5,14 +5,13 @@ import org.springframework.transaction.annotation.Transactional;
 
 /**
  * @author payno
- * @date 2019/12/3 11:33
+ * @date 2020/1/16 15:48
  * @description
  */
 @Component
-public class Service {
-    @Transactional(rollbackFor = Exception.class)
-    public void run(String val) throws Exception{
-        val="hello";
-        throw new Exception();
+public class Tran5 {
+    @Transactional
+    public void init(){
+
     }
 }

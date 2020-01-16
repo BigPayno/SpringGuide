@@ -16,6 +16,7 @@ public class Runner implements ApplicationRunner {
     @Autowired
     Print print;
 
+    @Override
     public void run(ApplicationArguments args) throws Exception {
         System.out.println("auto configuration success!");
         print.print();

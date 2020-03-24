@@ -6,13 +6,13 @@
 local function zrangebyscore(queueKey,startTime,endTime)
     return redis.call('zrangebyscore',queueKey,startTime,endTime,'withScores');
 end
-local function zremrangebyrank(queueKey,startTime,endTime)
-    redis.call('zremrangebyrank',queueKey,startTime,endTime);
+local function zremrangebyscore(queueKey,startTime,endTime)
+    redis.call('zremrangebyscore',queueKey,startTime,endTime);
 end
 
 local queueKey = KEYS[1];
 local startTime = tonumber(ARGV[1]);
 local endTime = tonumber(ARGV[2]);
 local taskList = zrangebyscore(queueKey,startTime,endTime);
-zremrangebyrank(queueKey,startTime,endTime);
+zremrangebyscore(queueKey,startTime,endTime);
 return taskList;

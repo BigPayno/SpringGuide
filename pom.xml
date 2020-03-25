@@ -25,6 +25,7 @@
         <module>dubbo</module>
         <module>zookeeper</module>
         <module>boot</module>
+        <module>mapstruct</module>
     </modules>
 
 </project>

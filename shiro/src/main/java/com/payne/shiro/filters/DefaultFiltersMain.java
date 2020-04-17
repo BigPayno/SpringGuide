@@ -1,5 +1,6 @@
 package com.payne.shiro.filters;
 
+import org.apache.shiro.web.filter.authc.BasicHttpAuthenticationFilter;
 import org.apache.shiro.web.filter.mgt.DefaultFilter;
 import org.apache.shiro.web.servlet.AbstractShiroFilter;
 

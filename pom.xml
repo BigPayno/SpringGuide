@@ -26,6 +26,7 @@
         <module>zookeeper</module>
         <module>boot</module>
         <module>mapstruct</module>
+        <module>linux</module>
     </modules>
 
 </project>

@@ -1,0 +1,4 @@
+rm -rf
+mv
+chmod
+redis-cli keys "prefix*" | xargs redis-cli del

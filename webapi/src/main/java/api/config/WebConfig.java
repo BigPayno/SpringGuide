@@ -61,7 +61,10 @@ public class WebConfig extends WebMvcConfigurationSupport {
     @ConditionalOnClass({JSON.class})
     public HttpMessageConverter<?> fastJsonHttpMessageConverters(){
         FastJsonHttpMessageConverter fastConverter = new FastJsonHttpMessageConverter();
-        fastConverter.setSupportedMediaTypes(Lists.newArrayList(MediaType.APPLICATION_JSON));
+        fastConverter.setSupportedMediaTypes(Lists.newArrayList(
+                MediaType.APPLICATION_JSON,
+                MediaType.valueOf("application/vnd.spring-boot.actuator.v2+json")
+        ));
         FastJsonConfig fastJsonConfig = new FastJsonConfig();
         fastJsonConfig.setSerializerFeatures(
                 SerializerFeature.PrettyFormat

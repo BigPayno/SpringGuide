@@ -27,6 +27,7 @@
         <module>boot</module>
         <module>mapstruct</module>
         <module>linux</module>
+        <module>webapi</module>
     </modules>
 
 </project>

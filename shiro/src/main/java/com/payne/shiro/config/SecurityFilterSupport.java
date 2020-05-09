@@ -35,6 +35,7 @@ public class SecurityFilterSupport {
         shiroFilterFactoryBean.setSuccessUrl("/index");
         shiroFilterFactoryBean.setUnauthorizedUrl("/403");
         LinkedHashMap<String, Filter> filterLinkedHashMap=new LinkedHashMap<>();
+        //必须用new，因为Spring会扫描Filter注入
         filterLinkedHashMap.put("token",new TokenFilter(tokenDecoder));
         shiroFilterFactoryBean.setFilters(filterLinkedHashMap);
         LinkedHashMap<String, String> filterChainDefinitionMap = new LinkedHashMap<>();

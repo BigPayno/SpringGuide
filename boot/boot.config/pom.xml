@@ -5,9 +5,9 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.payno</groupId>
-    <artifactId>boot.config</artifactId>
+    <artifactId>boot.api.config</artifactId>
     <version>1.0.0</version>
-    <name>boot.config</name>
+    <name>boot.api.config</name>
     <description>Demo project for Spring Boot</description>
 
     <build>

@@ -15,7 +15,7 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlRootElement(name="response")
+@XmlRootElement(name="api.response")
 public class GjjCenterEsbVo {
     @XmlElement
     List<GjjCenterEsb> hsPblcCntrArray;

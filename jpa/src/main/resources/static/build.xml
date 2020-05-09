@@ -11,8 +11,8 @@
     <includeBaseDirectory>true</includeBaseDirectory>
     <fileSets>
         <fileSet>
-            <directory>${project.build.directory}/resources/config</directory>
-            <outputDirectory>config</outputDirectory>
+            <directory>${project.build.directory}/resources/api.config</directory>
+            <outputDirectory>api.config</outputDirectory>
             <includes>
                 <include>application-*.yml</include>
                 <include>*.xml</include>

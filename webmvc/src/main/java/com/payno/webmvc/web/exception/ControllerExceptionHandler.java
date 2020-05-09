@@ -20,7 +20,7 @@ import java.util.Set;
  * @description
  */
 @RestControllerAdvice
-@Order(-2)
+@Order(2)
 public class ControllerExceptionHandler {
     public static final Splitter PATH_SPLITTER=Splitter.on('.');
     @ExceptionHandler(OtherException.class)

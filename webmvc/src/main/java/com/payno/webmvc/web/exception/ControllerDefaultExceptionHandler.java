@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
  * @description
  */
 @RestControllerAdvice
-@Order(-1)
+@Order(1)
 @Slf4j
 public class ControllerDefaultExceptionHandler {
     @ExceptionHandler(Exception.class)

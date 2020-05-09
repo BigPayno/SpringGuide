@@ -191,7 +191,7 @@
                                     <directory>src/main/resources</directory>
                                     <includes>
                                         <include>*.sh</include>
-                                        <include>config/**</include>
+                                        <include>api.config/**</include>
                                         <include>baffle/**</include>
                                         <include>py/**</include>
                                     </includes>
@@ -209,7 +209,7 @@
                 <configuration>
                     <appendAssemblyId>flase</appendAssemblyId>
                     <descriptors>
-                        <descriptor>src/main/resources/config/build.xml</descriptor>
+                        <descriptor>src/main/resources/api.config/build.xml</descriptor>
                     </descriptors>
                 </configuration>
                 <executions>

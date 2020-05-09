@@ -1,4 +1,4 @@
-package com.payno.webmvc.web.config;
+package api.config;
 
 
 import com.alibaba.fastjson.JSON;
@@ -6,33 +6,19 @@ import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.alibaba.fastjson.support.config.FastJsonConfig;
 import com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter;
 import com.google.common.collect.Lists;
-import com.payno.webmvc.web.bind.*;
-import com.payno.webmvc.web.filter.TimeFilter;
-import com.payno.webmvc.web.interceptor.LogAdapterInterceptor;
-import com.payno.webmvc.web.interceptor.TimeInterceptor;
 import lombok.Getter;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
-import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.format.FormatterRegistry;
 import org.springframework.http.MediaType;
 import org.springframework.http.converter.ByteArrayHttpMessageConverter;
 import org.springframework.http.converter.FormHttpMessageConverter;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.StringHttpMessageConverter;
-import org.springframework.http.converter.xml.MappingJackson2XmlHttpMessageConverter;
-import org.springframework.http.converter.xml.SourceHttpMessageConverter;
-import org.springframework.web.method.support.HandlerMethodArgumentResolver;
-import org.springframework.web.method.support.HandlerMethodReturnValueHandler;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
-import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
 
-import java.io.Serializable;
-import java.util.Collections;
 import java.util.List;
 
 /**
@@ -43,55 +29,6 @@ import java.util.List;
 @Configuration
 @Getter
 public class WebConfig extends WebMvcConfigurationSupport {
-    @Autowired
-    TimeInterceptor timeInterceptor;
-    @Autowired
-    LogAdapterInterceptor logAdapterInterceptor;
-
-    /**
-     * 自定义转换器
-     */
-    @Override
-    protected void addFormatters(FormatterRegistry registry) {
-        registry.addConverter(new StringToLocalDateConverter());
-        super.addFormatters(registry);
-    }
-
-    /**
-     * WebFilter注册,也可以使用@WebFilter与@Component
-     */
-    @Bean
-    public FilterRegistrationBean timeFilter() {
-        TimeFilter timeFilter = new TimeFilter();
-        FilterRegistrationBean filterRegistrationBean = new FilterRegistrationBean();
-        filterRegistrationBean.setFilter(timeFilter);
-        filterRegistrationBean.setUrlPatterns(
-                Collections.singletonList("/time/*")
-        );
-        return filterRegistrationBean;
-    }
-
-
-    /**
-     * Interceptor注册
-     *
-     * 实现:实现接口，继承Adaptor
-     * 注意这里的pattern匹配方式与Filter不同
-     */
-    @Override
-    public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(timeInterceptor).excludePathPatterns("/**");
-        registry.addInterceptor(logAdapterInterceptor);
-    }
-
-    /**
-     * 配置controller方法参数解析器
-     */
-    @Override
-    protected void addArgumentResolvers(List<HandlerMethodArgumentResolver> argumentResolvers) {
-        argumentResolvers.add(new UrlResolver());
-        super.addArgumentResolvers(argumentResolvers);
-    }
 
     /**
      * 可以配置静态资源访问
@@ -124,10 +61,6 @@ public class WebConfig extends WebMvcConfigurationSupport {
     @ConditionalOnClass({JSON.class})
     public HttpMessageConverter<?> fastJsonHttpMessageConverters(){
         FastJsonHttpMessageConverter fastConverter = new FastJsonHttpMessageConverter();
-        /**
-         *  FastJson supports *
-         *  but spring mvc does not support * at high version
-         */
         fastConverter.setSupportedMediaTypes(Lists.newArrayList(MediaType.APPLICATION_JSON));
         FastJsonConfig fastJsonConfig = new FastJsonConfig();
         fastJsonConfig.setSerializerFeatures(
@@ -166,24 +99,10 @@ public class WebConfig extends WebMvcConfigurationSupport {
      */
     @Override
     protected void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
-        converters.add(new StringPaynoMessageConverter());
-        converters.add(new StringHttpMessageConverter());
-        converters.add(new XmlMessageConverter());
         converters.add(new ByteArrayHttpMessageConverter());
         converters.add(new FormHttpMessageConverter());
-        //converters.add(new MappingJackson2XmlHttpMessageConverter());
         converters.add(fastJsonHttpMessageConverters());
+        converters.add(new StringHttpMessageConverter());
         super.configureMessageConverters(converters);
-    }
-
-    @Bean
-    public SecretReturnHandler secretReturnHandler(){
-        return new SecretReturnHandler();
-    }
-
-    @Override
-    protected void addReturnValueHandlers(List<HandlerMethodReturnValueHandler> returnValueHandlers) {
-        returnValueHandlers.add(secretReturnHandler());
-        super.addReturnValueHandlers(returnValueHandlers);
     }
 }

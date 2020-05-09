@@ -16,7 +16,7 @@ import java.util.Set;
  * @date 2020/4/17 10:12
  * @description
  */
-@Components
+@Component
 public class Mappings {
     @Autowired
     private RequestMappingHandlerMapping handlerMapping;

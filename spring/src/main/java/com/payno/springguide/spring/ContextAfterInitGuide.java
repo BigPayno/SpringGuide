@@ -68,11 +68,11 @@ public class ContextAfterInitGuide {
             /**
              * 尝试删除BeanDefinition
              */
-           //context.removeBeanDefinition("com.payno.springguide.config.ContextAfterInitGuide$AfterConfig$Person");
+           //context.removeBeanDefinition("com.payno.springguide.api.config.ContextAfterInitGuide$AfterConfig$Person");
             Config2 config2=context.getBean(Config2.class);
             /*BeanDefinition beanDefinition=new AnnotatedGenericBeanDefinition(Person.class);
             context.registerBeanDefinition(
-                    "com.payno.springguide.config.ContextAfterInitGuide$AfterConfig$Person",
+                    "com.payno.springguide.api.config.ContextAfterInitGuide$AfterConfig$Person",
                      beanDefinition
             );*/
             config2.getPerson().print();

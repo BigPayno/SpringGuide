@@ -20,9 +20,9 @@ import java.util.List;
  *      2. FrameworkServlet 初始化 WebApplicationContext,并提供service方法预处理请求
  *      3. DispatcherServlet 具体分发处理.
  * 那么就可以在FrameworkServlet查看到该类重写了service(),doGet(),doPost()…等方法,
- *      这些实现里面都有一个预处理方法processRequest(request, response);,
+ *      这些实现里面都有一个预处理方法processRequest(request, api.response);,
  *      所以定位到了我们要找的位置
- * 查看processRequest(request, response);的实现,具体可以分为三步:
+ * 查看processRequest(request, api.response);的实现,具体可以分为三步:
  *      1. 获取上一个请求的参数
  *      2. 重新建立新的参数
  *      3. 设置到XXContextHolder

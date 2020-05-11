@@ -63,7 +63,7 @@ public class WebConfig extends WebMvcConfigurationSupport {
         FastJsonHttpMessageConverter fastConverter = new FastJsonHttpMessageConverter();
         fastConverter.setSupportedMediaTypes(Lists.newArrayList(
                 MediaType.APPLICATION_JSON,
-                MediaType.valueOf("application/vnd.spring-boot.actuator.v2+json")
+                MediaType.valueOf("application/vnd.spring-boot.actuator.v3+json")
         ));
         FastJsonConfig fastJsonConfig = new FastJsonConfig();
         fastJsonConfig.setSerializerFeatures(

@@ -1,0 +1,9 @@
+management:
+  # 默认Actuator只暴露了health和info端点，在SpringBoot的application.yml配置文件中加入这句话暴露所有端点
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    shutdown:
+      enabled: true

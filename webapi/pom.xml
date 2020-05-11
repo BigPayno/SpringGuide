@@ -11,7 +11,7 @@
     <groupId>com.payno</groupId>
     <artifactId>webapi</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>webapi</name>
+    <name>webapi actuator</name>
     <description>Demo project for Spring Boot</description>
 
     <properties>

@@ -5,5 +5,10 @@ management:
       exposure:
         include: "*"
   endpoint:
+    httptrace:
+      enabled: true
     shutdown:
       enabled: true
+spring:
+  pid:
+    file: d:/boot.pid

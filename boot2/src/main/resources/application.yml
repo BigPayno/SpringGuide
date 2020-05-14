@@ -12,5 +12,7 @@ management:
 spring:
   pid:
     file: d:/boot.pid
+  devtools:
+    add-properties: false
 test2:
-  name: payno23
+  name: payno

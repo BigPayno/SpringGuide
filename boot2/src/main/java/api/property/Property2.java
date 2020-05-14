@@ -14,6 +14,6 @@ import org.springframework.stereotype.Component;
 @Component
 @RefreshScope
 public class Property2 {
-    @Value("test2.name")
+    @Value("${test2.name}")
     String name;
 }

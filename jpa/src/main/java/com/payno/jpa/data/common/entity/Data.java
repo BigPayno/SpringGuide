@@ -9,6 +9,8 @@ import org.springframework.data.domain.Example;
  */
 public interface Data<T extends Data<T>> {
 
+    void setNativeData(String data);
+
     /**
      * get
      * @author: payno

@@ -12,3 +12,5 @@ management:
 spring:
   pid:
     file: d:/boot.pid
+test2:
+  name: payno23

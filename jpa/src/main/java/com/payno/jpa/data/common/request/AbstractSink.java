@@ -13,8 +13,8 @@ public abstract class AbstractSink<S,T extends Data<T>> implements Sink<S,T> {
 
     @Override
     public T request(SourceContext<S> context) {
-        String res=requestInterval(context);
         T t=getT(context);
+        t.setNativeData(requestInterval(context));
         Resolvers.resolve(t);
         return t;
     }

@@ -1,11 +1,9 @@
 package api.endpoint;
 
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.boot.actuate.endpoint.annotation.Endpoint;
 import org.springframework.boot.actuate.endpoint.annotation.ReadOperation;
 import org.springframework.boot.actuate.endpoint.annotation.Selector;
 import org.springframework.boot.actuate.endpoint.web.annotation.WebEndpoint;
-import org.springframework.boot.context.config.ConfigFileApplicationListener;
 import org.springframework.stereotype.Component;
 
 /**

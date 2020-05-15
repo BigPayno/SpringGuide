@@ -4,7 +4,6 @@ import api.property.Property;
 import api.property.Property2;
 import api.response.ResponseAdvice;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cloud.context.refresh.ContextRefresher;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;

@@ -1,6 +1,5 @@
 package api;
 
-import api.listener.RefreshListener;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.ApplicationPidFileWriter;

@@ -1,0 +1,7 @@
+spring:
+  security:
+    # 配置默认的 InMemoryUserDetailsManager 的用户账号与密码。
+    user:
+      name: admin # 账号
+      password: admin # 密码
+      roles: ADMIN # 拥有角色

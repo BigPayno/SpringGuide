@@ -1,9 +1,11 @@
 package com.payno.spring.security.base.security;
 
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 
@@ -11,6 +13,19 @@ import org.springframework.security.crypto.factory.PasswordEncoderFactories;
  * @author payno
  * @date 2020/5/15 09:38
  * @description
+ *      SecurityBuilder<O> O build()
+ *      SecurityConfigurer<O,B extends SecurityBuilder<O>> void init(B builder)/void configure(B builder)
+ *      WebSecurityConfigurer<T extends SecurityBuilder<Filter>> extends SecurityConfigurer<Filter, T>
+ *          具有创建Filter的能力，创建者为T
+ *      WebSecurityConfigurerAdapter implements WebSecurityConfigurer<WebSecurity>
+ *          具有创建Filter的能力，创建者为WebSecurity
+ *
+ *      WebSecurity
+ *          extends AbstractConfiguredSecurityBuilder<Filter, WebSecurity>
+ *              AbstractConfiguredSecurityBuilder拥有一些advice操作(pre,post等)
+ *          implements SecurityBuilder<Filter>, ApplicationContextAware
+ *              创建Filter的能力，具有装载ApplicationContextAware的能力从而进行configure
+ *
  */
 @Configuration
 /**
@@ -18,6 +33,7 @@ import org.springframework.security.crypto.factory.PasswordEncoderFactories;
  */
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
+
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth
@@ -53,5 +69,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                     .anyRequest().authenticated()
                 .and().formLogin().permitAll()
                 .and().logout().permitAll();
+    }
+
+    @Override
+    protected AuthenticationManager authenticationManager() throws Exception {
+        return super.authenticationManager();
     }
 }

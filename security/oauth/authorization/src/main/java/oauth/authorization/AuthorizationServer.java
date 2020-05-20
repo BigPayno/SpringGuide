@@ -30,7 +30,7 @@ public class AuthorizationServer extends AuthorizationServerConfigurerAdapter {
     @Override
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
         clients.inMemory()
-                .withClient("app1").secret("112233")
+                .withClient("app1").secret("{noop}112233")
                 .redirectUris("http://localhost:8080/callback")
                 /**
                  *  authorization_code：授权码类型。
@@ -40,7 +40,7 @@ public class AuthorizationServer extends AuthorizationServerConfigurerAdapter {
                  *  refresh_token：通过以上授权获得的刷新令牌来获取新的令牌
                  */
                 .authorities("ROLE_CLIENT_TRUST")
-                .authorizedGrantTypes("authorization_code","refresh_token")
+                .authorizedGrantTypes("authorization_code")
                 // 授权码
                 .scopes( "read_contacts");
     }

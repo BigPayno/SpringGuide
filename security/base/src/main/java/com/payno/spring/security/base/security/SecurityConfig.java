@@ -34,6 +34,17 @@ import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
+    /**
+     *  Spring Security中，安全构建器HttpSecurity和WebSecurity的区别是 :
+     *
+     *     WebSecurity不仅通过HttpSecurity定义某些请求的安全控制，也通过其他方式定义其他某些请求可以忽略安全控制;
+     *     HttpSecurity仅用于定义需要安全控制的请求(当然HttpSecurity也可以指定某些请求不需要安全控制);
+     *     可以认为HttpSecurity是WebSecurity的一部分，WebSecurity是包含HttpSecurity的更大的一个概念;
+     *     构建目标不同
+     *         WebSecurity构建目标是整个Spring Security安全过滤器FilterChainProxy,
+     *         而HttpSecurity的构建目标仅仅是FilterChainProxy中的一个SecurityFilterChain。
+     */
+
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth
@@ -42,6 +53,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 //  密码必须包含{加密类型@PasswordEncoderFactories}
                 .withUser("admin").password("{noop}admin").roles("ADMIN")
                 .and().withUser("user").password("{noop}user").roles("USER");
+    }
+
+    @Override
+    public void configure(WebSecurity web) throws Exception {
+        super.configure(web);
     }
 
     @Override
@@ -63,12 +79,17 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             自定义登陆页面，可以通过 #loginPage(String loginPage) 方法，来进行设置。不过这里我们希望像「2. 快速入门」一样，使用默认的登陆界面
          */
         http
+                .antMatcher("/**")
                 .authorizeRequests()
                     .antMatchers("/admin/**").hasRole("ADMIN")
                     .antMatchers("/user/**").hasAnyRole("ADMIN","USER")
                     .anyRequest().authenticated()
                 .and().formLogin().permitAll()
                 .and().logout().permitAll();
+        /**
+         *  http.antMatcher("/**")指该类对应Filter只处理/**请求->HttpSecurity
+         *  http.authorizeRequests().antMatcher("/admin/**")指对应路径的授权信息->ExpressionInterceptUrlRegistry
+         */
     }
 
     @Override

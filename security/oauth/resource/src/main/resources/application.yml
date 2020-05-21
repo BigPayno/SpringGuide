@@ -6,3 +6,7 @@ logging:
     org:
       springframework:
         security: debug
+spring:
+  security:
+    oauth2:
+      a

@@ -1,7 +1,6 @@
 package oauth.callback;
 
 import com.google.common.collect.Lists;
-import org.springframework.boot.configurationprocessor.json.JSONObject;
 import org.springframework.http.client.ClientHttpRequestInterceptor;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -10,7 +9,6 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Base64;
-import java.util.Map;
 
 /**
  * @author payno

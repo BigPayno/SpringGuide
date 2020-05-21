@@ -1,11 +1,10 @@
-package oauth.authorization;
+package oauth.resource;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 
 /**
@@ -27,19 +26,18 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .inMemoryAuthentication()
                 .passwordEncoder(PasswordEncoderFactories.createDelegatingPasswordEncoder())
                 //  密码必须包含{加密类型@PasswordEncoderFactories}
-                .withUser("admin").password("{noop}admin").roles("ADMIN","CLIENT_TRUST")
+                .withUser("admin").password("{noop}admin").roles("ADMIN")
                 .and().withUser("user").password("{noop}user").roles("USER");
     }
 
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http
-                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED)
-                .and().antMatcher("/**")
-                    .authorizeRequests()
-                        .anyRequest().authenticated()
-                    .and().formLogin().permitAll()
-                    .and().logout().permitAll();
+        http.antMatcher("/**")
+                .authorizeRequests()
+                    .antMatchers("/user/**").authenticated()
+                    .anyRequest().permitAll()
+                .and().formLogin().permitAll()
+                .and().logout().permitAll();
     }
 }

@@ -10,4 +10,4 @@ spring:
     ssl: false
     # 对应 RedissonProperties 类
     #redisson:
-      #api.config: classpath:/redisson/redisson.yml
+      #api.security: classpath:/redisson/redisson.yml

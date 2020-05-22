@@ -61,13 +61,13 @@ public class SpringClassUtilsGuide {
          * 不会持有，换而言之，可以自定义classloader并判断加载的类是否通过自定义类加载器加载
          */
         System.out.println(
-                ClassUtils.isPresent("com.payno.springguide.api.config.TestConfiguration",ClassUtils.getDefaultClassLoader().getParent())
+                ClassUtils.isPresent("com.payno.springguide.api.security.TestConfiguration",ClassUtils.getDefaultClassLoader().getParent())
         );
         System.out.println(
                 ClassUtils.isPresent("java.utils.List",ClassUtils.getDefaultClassLoader())
         );
         System.out.println(
-                ClassUtils.isPresent("com.payno.springguide.api.config.TestConfiguration",ClassUtils.getDefaultClassLoader())
+                ClassUtils.isPresent("com.payno.springguide.api.security.TestConfiguration",ClassUtils.getDefaultClassLoader())
         );
         /**
          * 不同加载器加载的类是不一样的

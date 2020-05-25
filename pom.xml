@@ -28,6 +28,7 @@
         <module>mapstruct</module>
         <module>linux</module>
         <module>boot2</module>
+        <module>feign</module>
     </modules>
 
 </project>

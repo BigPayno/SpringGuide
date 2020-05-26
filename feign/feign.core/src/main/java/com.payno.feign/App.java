@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
+import java.io.IOException;
 
 /**
  * @author payno
@@ -40,5 +41,15 @@ public class App {
         System.out.println(new String(
                 ByteStreams.toByteArray(file.getInputStream()), Charsets.UTF_8
         ));
+    }
+
+    @PostMapping("/error")
+    public void test4() throws Exception{
+       throw new IllegalStateException("aaaa");
+    }
+
+    @PostMapping("/error2")
+    public void test5() throws Exception{
+        throw new IOException();
     }
 }

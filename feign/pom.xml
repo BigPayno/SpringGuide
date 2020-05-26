@@ -15,6 +15,7 @@
     <modules>
         <module>feign.core</module>
         <module>feign.form</module>
+        <module>feign.retryer</module>
     </modules>
 
     <dependencies>

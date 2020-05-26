@@ -18,5 +18,11 @@ public class ContractGuide {
      * 这里，我们使用在 #list(@QueryMap Map<String, Object> queryMap) 方法上，解决 #list(@Param("name") String name, @Param("gender") Integer gender) 方法在使用 @Param 注解时传递 null 会报错的问题。
      *
      * ④ @Headers 注解，添加在方法上，设置请求头。
+     *
+     *
+     *
+     * JAXSContract jax标准契约
+     * SpringContract/SpringMvcContract spring契约
+     * ...
      */
 }

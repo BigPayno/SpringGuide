@@ -1,10 +1,7 @@
 package com.payno.feign;
 
 import feign.Feign;
-import feign.Response;
-import feign.RetryableException;
 import feign.Retryer;
-import feign.codec.ErrorDecoder;
 import feign.codec.StringDecoder;
 import org.springframework.boot.autoconfigure.http.HttpMessageConverters;
 import org.springframework.cloud.openfeign.support.SpringEncoder;

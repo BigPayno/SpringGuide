@@ -4,6 +4,7 @@ import com.alibaba.fastjson.support.spring.MappingFastJsonValue;
 import com.payno.webmvc.controller.SecretController;
 import com.payno.webmvc.web.annotation.Encryption;
 import com.payno.webmvc.web.domain.Response;
+import lombok.ToString;
 import org.springframework.core.MethodParameter;
 import org.springframework.http.MediaType;
 import org.springframework.http.converter.HttpMessageConverter;
@@ -20,6 +21,7 @@ import java.lang.reflect.Field;
  * @description
  *      类似的，Request
  */
+@ToString
 @RestControllerAdvice(basePackageClasses = SecretController.class)
 public class SecretResponseBodyAdvice implements ResponseBodyAdvice<Object> {
     @Override

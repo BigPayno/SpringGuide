@@ -1,11 +1,15 @@
 package com.payno.feign;
 
+import com.google.common.base.Charsets;
+import com.google.common.io.ByteSource;
+import com.google.common.io.ByteStreams;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -29,5 +33,12 @@ public class App {
     @GetMapping("/hello")
     public String test2(HttpServletRequest request){
         return request.getParameter("name");
+    }
+
+    @PostMapping("/upload")
+    public void test3(MultipartFile file) throws Exception{
+        System.out.println(new String(
+                ByteStreams.toByteArray(file.getInputStream()), Charsets.UTF_8
+        ));
     }
 }

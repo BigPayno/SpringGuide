@@ -2,7 +2,6 @@ import com.netflix.hystrix.HystrixCommand;
 import com.netflix.hystrix.HystrixCommandGroupKey;
 
 import java.util.Objects;
-import java.util.concurrent.Future;
 
 /**
  * @author payno

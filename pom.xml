@@ -29,9 +29,9 @@
         <module>linux</module>
         <module>boot2</module>
         <module>feign</module>
-        <module>nacos</module>
         <module>hystrix</module>
         <module>rxJava</module>
+        <module>alibaba</module>
     </modules>
 
 </project>

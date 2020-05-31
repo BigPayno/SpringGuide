@@ -42,7 +42,7 @@ import java.util.List;
  */
 @Configuration
 @Getter
-public class WebConfig extends WebMvcConfigurationSupport {
+public class  WebConfig extends WebMvcConfigurationSupport {
     @Autowired
     TimeInterceptor timeInterceptor;
     @Autowired

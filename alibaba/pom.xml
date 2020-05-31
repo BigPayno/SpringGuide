@@ -9,7 +9,11 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>nacos</artifactId>
+    <artifactId>alibaba</artifactId>
+    <packaging>pom</packaging>
+    <modules>
+        <module>alibaba.sentinel</module>
+    </modules>
 
     <dependencies>
         <dependency>
@@ -34,6 +38,12 @@
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <version>1.18.12</version>
+        </dependency>
+
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.12</version>
         </dependency>
     </dependencies>
 </project>

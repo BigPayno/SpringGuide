@@ -2,6 +2,7 @@ package com.payno.webmvc.controller;
 
 import com.payno.webmvc.web.config.ApplicationContextHolder;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,9 +17,10 @@ public class HttpBodyController{
     @Autowired
     ApplicationContextHolder holder;
 
-    @PostMapping(value = "/payno")
+    @PostMapping(value = "/payno",consumes = {MediaType.TEXT_PLAIN_VALUE},produces ={MediaType.TEXT_PLAIN_VALUE} )
     public String easyPayno(@RequestBody String body){
         System.out.println(body);
+        HttpMessageConverter
         return body;
     }
 

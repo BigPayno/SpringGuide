@@ -60,7 +60,7 @@ public class OAuthAuthenticationManager {
 
         Collection<String> resourceIds = auth.getOAuth2Request().getResourceIds();
         if (resourceId != null && resourceIds != null && !resourceIds.isEmpty() && !resourceIds.contains(resourceId)) {
-            throw new OAuth2AccessDeniedException("Invalid token does not contain resource id (" + resourceId + ")");
+            throw new OAuth2AccessDeniedException("Invalid token does not contain core id (" + resourceId + ")");
         }
 
         checkClientDetails(auth);

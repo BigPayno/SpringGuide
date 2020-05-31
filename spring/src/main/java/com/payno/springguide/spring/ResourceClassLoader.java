@@ -36,7 +36,7 @@ public final class ResourceClassLoader extends ClassLoader{
                 byte[] resource= ByteStreams.toByteArray(io);
                 return defineClass(name,resource,0,resource.length);
             }catch (IOException e){
-                throw new ClassNotFoundException("the resource io occurs exception!");
+                throw new ClassNotFoundException("the core io occurs exception!");
             }
         }else {
             return getParent().loadClass(name);

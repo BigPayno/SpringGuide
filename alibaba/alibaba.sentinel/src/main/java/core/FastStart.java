@@ -25,6 +25,12 @@ import java.util.stream.IntStream;
  */
 public class FastStart {
 
+    /**
+     *  entryType 	EntryType 	资源调用的流量类型，是入口流量（EntryType.IN）还是出口流量（EntryType.OUT），注意系统规则只对 IN 生效 	EntryType.OUT
+     *  count 	    int 	    本次资源调用请求的 token 数目 	1
+     *  args 	    Object[] 	传入的参数，用于热点参数限流 	无
+     */
+
     @Before
     public void init(){
         FlowRule rule = new FlowRule();
@@ -36,7 +42,7 @@ public class FastStart {
     }
 
     @Test
-    public void test() {
+    public void sync() {
         while(true){
             // 1.5.0 版本开始可以直接利用 try-with-resources 特性
             try (Entry entry = SphU.entry("HelloWorld")) {
@@ -51,9 +57,9 @@ public class FastStart {
     }
 
     @Test
-    public void test2() {
+    public void async() {
         IntStream.range(0,50).forEach(val->{
-            try (Entry entry = SphU.entry("HelloWorld")) {
+            try (Entry entry = SphU.asyncEntry("HelloWorld")) {
                 new Thread(()->{
                     Threads.PrintStream.Out.println("hello world");
                 },Integer.valueOf(val).toString()).start();
